@@ -64,7 +64,14 @@
   			success: function(beta) {
 				$("#resultParagraph").text(beta);
 				}
+				var sum = 0;
+				foreach(var value in beta)
+				{
+					sum +=value;
+				}
+				console.log(sum);
 			});
+
 	});
 });
 </script>
