@@ -59,7 +59,7 @@
 			var searchText = $('#search').val();
 			console.log(searchText);
 			$.ajax({
-  			url: '/googletrends/:' + searchText,
+  			url: '/googletrends/' + searchText,
   			type: "GET",
   			success: function(beta) {
 				$("#resultParagraph").text(beta);
