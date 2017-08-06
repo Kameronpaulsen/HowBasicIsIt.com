@@ -17,7 +17,7 @@ app.get('/googletrends/:keyword?', function(req,res){
 
 	var endDate = new Date();
 	var startDate = new Date();
-	startDate.setMonth(endDate.year() -2);
+	startDate.setMonth(endDate.getYear() -2);
 	console.log(req.params.id);
 	console.log(endDate);
 	console.log(startDate);
