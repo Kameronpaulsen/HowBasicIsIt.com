@@ -3,10 +3,9 @@ var express= require('express');
 var app =  express();
 
 const googleTrends= require('google-trends-api');
-//const bodyParser = require('body-parser');
-
-//app.use(bodyParser.json()); // for parsing application/json
-//app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.use(express.static('views'));
 
@@ -26,7 +25,7 @@ app.get('/googletrends/:id?', function(req,res){
 	googleTrends.interestOverTime({keyword: req.params.id,startTime: startDate,endTime: endDate})
 	.then(function(results){
 	console.log(results);
-  	res.send(results);
+  	res.send(JSON.stringify(results));
 	})
 	
 
