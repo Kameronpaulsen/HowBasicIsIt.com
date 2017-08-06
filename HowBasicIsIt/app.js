@@ -11,6 +11,9 @@ app.get('/', function(req,res){
 
 app.get('/googletrends/:id?', function(req,res){
 
+	res.send(req.parms);
+
+	/*
 	var endDate = New Date();
 	var startDate = endDate(endDate.getMonth()-1);
 
@@ -21,6 +24,7 @@ app.get('/googletrends/:id?', function(req,res){
 	.then(function(results){
   	res.send(results);
 	})
+	*/
 
 });
 
