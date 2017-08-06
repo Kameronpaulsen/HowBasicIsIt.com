@@ -29,7 +29,7 @@ app.get("/kc_test/:ids?", function (request, response) {
   response.send(request.params); //body-parser auto-serializes it for us
 });
 
-var server = app.listen(8081, function(){
+var server = app.listen(3000, function(){
 	var host= server.address().address
 	var port = server.address().port
 
