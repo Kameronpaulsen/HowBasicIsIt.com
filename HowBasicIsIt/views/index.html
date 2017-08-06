@@ -56,7 +56,7 @@
 <script>
 	$(document).ready(function(){
 		$('#searchBtn').on('click', function(){
-			var searchText = $(this).text;
+			var searchText = $(this).val;
 			$.ajax({
   			url: '/googletrends/:' + searchText,
   			type: "GET",
