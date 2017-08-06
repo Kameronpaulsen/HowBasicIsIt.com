@@ -1,7 +1,9 @@
 var express= require('express');
 var app =  express();
 
+/*
 const googleTrends= require('google-trends-api');
+*/
 
 app.use(express.static('views'));
 
