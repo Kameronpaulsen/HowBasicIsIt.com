@@ -9,7 +9,7 @@ app.get('/', function(req,res){
 	res.sendFile(_dirname + "/" + "index.html");
 });
 
-app.get('/googletrends/:keyword?', function(req,res){
+app.get('/googletrends/:id?', function(req,res){
 
 	var endDate = New Date();
 	var startDate = endDate(endDate.getMonth()-1);
