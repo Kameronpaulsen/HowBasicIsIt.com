@@ -24,7 +24,6 @@ app.get('/googletrends/:keyword?', function(req,res){
 	googleTrends.interestOverTime({keyword: req.params.keyword,startTime: startDate,endTime: endDate})
 	//googleTrends.interestOverTime({keyword: req.params.keyword})
 	.then(function(results){
-	console.log(results);
   	res.send(results);
 	})
 });
