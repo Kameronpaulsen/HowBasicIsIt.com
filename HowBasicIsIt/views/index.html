@@ -69,6 +69,11 @@
 					console.log(jsonResult);
 					}
 				});
+				foreach(var val in jsonResult.timelineData)
+				{
+					sum += val.value[0];
+				}
+				console.log(sum);
 	});
 });
 </script>
