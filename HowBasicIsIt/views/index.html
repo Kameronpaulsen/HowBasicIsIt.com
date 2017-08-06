@@ -67,14 +67,15 @@
 					$("#resultParagraph").text(beta);
 					jsonResult = JSON.parse(beta);
 					console.log(jsonResult);
+						for(var val in jsonResult.timelineData)
+						{
+							sum += val.value[0];
+							console.log("value:" + val.value[0]);
+						}
+					console.log(sum);
 					}
 				});
-				for(var val in jsonResult.timelineData)
-				{
-					sum += val.value[0];
-					console.log("value:" + val.value[0]);
-				}
-				console.log(sum);
+
 	});
 });
 </script>
