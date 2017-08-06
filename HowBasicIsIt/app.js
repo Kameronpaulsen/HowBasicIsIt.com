@@ -9,11 +9,12 @@ app.get('/', function(req,res){
 	res.sendFile(_dirname + "/" + "index.html");
 });
 
+/*
 app.get('/googletrends/:id?', function(req,res){
 
 	res.send(req.params);
 
-	/*
+	
 	var endDate = New Date();
 	var startDate = endDate(endDate.getMonth()-1);
 
@@ -24,9 +25,11 @@ app.get('/googletrends/:id?', function(req,res){
 	.then(function(results){
   	res.send(results);
 	})
-	*/
+	
 
 });
+*/
+
 
 app.get('/test', function(req,res){
 	res.send("test");
