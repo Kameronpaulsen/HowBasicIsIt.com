@@ -20,10 +20,10 @@ app.get('/googletrends/:id?', function(req,res){
 	var endDate = new Date();
 	var startDate = new Date();
 	startDate.setMonth(endDate.getMonth() -3);
-	console.log(req.params);
+	console.log(req.params.id);
 	console.log(endDate);
 	console.log(startDate);
-	googleTrends.interestOverTime({keyword: req.params,startTime: startDate,endTime: endDate})
+	googleTrends.interestOverTime({keyword: req.params.id,startTime: startDate,endTime: endDate})
 	.then(function(results){
 	console.log(results);
   	res.send(results);
