@@ -4,6 +4,7 @@ var app =  express();
 /*
 const googleTrends= require('google-trends-api');
 */
+const bodyParser = require('body-parser');
 
 app.use(express.static('views'));
 
