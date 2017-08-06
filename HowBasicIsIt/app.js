@@ -15,7 +15,6 @@ app.get('/', function(req,res){
 
 app.get('/googletrends/:id?', function(req,res){
 
-	res.send(req.params);
 	var endDate = new Date();
 	var startDate = new Date();
 	startDate.setMonth(endDate.getMonth() -3);
@@ -25,10 +24,8 @@ app.get('/googletrends/:id?', function(req,res){
 	googleTrends.interestOverTime({keyword: req.params.id,startTime: startDate,endTime: endDate})
 	.then(function(results){
 	console.log(results);
-  	res.send(JSON.stringify(results));
+  	res.send(results);
 	})
-	
-
 });
 
 app.get('/test', function(req,res){
