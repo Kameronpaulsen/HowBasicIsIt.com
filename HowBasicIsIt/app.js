@@ -17,8 +17,7 @@ app.get('/googletrends/:keyword?', function(req,res){
 
 	var endDate = new Date();
 	var startDate = new Date();
-	startDate.setFullYear(endDate.getFullYear() -2);
-	console.log(req.params.id);
+	startDate.setFullYear(endDate.getFullYear() -4);
 	console.log(endDate);
 	console.log(startDate);
 	googleTrends.interestOverTime({keyword: req.params.keyword,startTime: startDate,endTime: endDate})
