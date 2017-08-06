@@ -60,16 +60,19 @@
 			var sum = 0;
 			var jsonResult = new Object();
 			console.log(searchText);
-			$.ajax({
-  			url: '/googletrends/' + searchText,
-  			type: "GET",
-  			success: function(beta) {
-				$("#resultParagraph").text(beta);
-				jsonResult = JSON.parse(beta);
-				console.log(jsonResult);
-				}
-			});
-
+				$.ajax({
+	  			url: '/googletrends/' + searchText,
+	  			type: "GET",
+	  			success: function(beta) {
+					$("#resultParagraph").text(beta);
+					jsonResult = JSON.parse(beta);
+					console.log(jsonResult);
+					}
+				});
+			foreach(var timelineData in jsonResult)
+			{
+				timelineData[0].value[0];
+			}
 	});
 });
 </script>
