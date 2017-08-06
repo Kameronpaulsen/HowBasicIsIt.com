@@ -10,7 +10,7 @@ app.get('/', function(req,res){
 
 });
 
-app.get('/googletrends/:keyword', function(req,res){
+app.get('/googletrends/:keyword?', function(req,res){
 
 	var endDate = New Date();
 	var startDate = endDate(endDate.getMonth()-1);
