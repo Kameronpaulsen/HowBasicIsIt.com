@@ -22,7 +22,7 @@ app.get('/googletrends/:id?', function(req,res){
 	console.log(startDate);
 	googleTrends.interestOverTime({keyword: req.params,startTime: startDate,endTime: endDate})
 	.then(function(results){
-  	res.send(results);
+  	res.send(JSON.stringify(results));
 	})
 	
 
