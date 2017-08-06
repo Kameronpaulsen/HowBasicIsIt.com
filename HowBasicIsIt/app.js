@@ -1,35 +1,42 @@
-const express    = require('express');
-const bodyParser = require("body-parser");
-const app        = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+var express= require('express');
+
+var app =  express();
+
+const googleTrends= require('google-trends-api');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('views'));
 
-
-// ------------------------------- MAIN ------------------------------------ \\
-
-// app.use(function(req, res, next) {                                                             
-//     res.header("Access-Control-Allow-Origin", "*");                                            
-//     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");                   
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");                                                                               
-//     next();
-// });
-
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + 'index.html');
+app.get('/', function(req,res){
+	res.sendFile(_dirname + "/" + "index.html");
 });
 
-app.put("/kc_test", function (request, response) {
-  response.send(request.body); //body-parser auto-serializes it for us
+app.get('/googletrends/:id?', function(req,res){
+
+	res.send(req.params);
+
+	
+	var endDate = New Date();
+	var startDate = endDate(endDate.getMonth()-1);
+
+	console.log(endDate);
+	console.log(startDate);
+
+	googleTrends.interestOverTime({keyword: req.params,startTime: startDate,endTime: endDate})
+	.then(function(results){
+  	res.send(results);
+	})
+	
+
 });
 
-app.get("/kc_test/:ids?", function (request, response) {
-  response.send(request.params); //body-parser auto-serializes it for us
+app.get('/test', function(req,res){
+	res.send("test");
 });
 
-var server = app.listen(3000, function(){
+var server = app.listen(8081, function(){
 	var host= server.address().address
 	var port = server.address().port
 
