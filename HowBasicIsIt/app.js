@@ -11,7 +11,7 @@ app.get('/', function(req,res){
 
 app.get('/googletrends/:id?', function(req,res){
 
-	res.send(req.parms);
+	res.send(req.params);
 
 	/*
 	var endDate = New Date();
