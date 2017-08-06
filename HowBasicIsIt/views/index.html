@@ -57,6 +57,7 @@
 	$(document).ready(function(){
 		$('#searchBtn').on('click', function(){
 			var searchText = $('#search').val();
+			var sum = 0;
 			console.log(searchText);
 			$.ajax({
   			url: '/googletrends/' + searchText,
@@ -64,7 +65,6 @@
   			success: function(beta) {
 				$("#resultParagraph").text(beta);
 				}
-				var sum = 0;
 				console.log(sum);
 			});
 
