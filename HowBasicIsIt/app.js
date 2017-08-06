@@ -10,11 +10,19 @@ app.get('/', function(req,res){
 
 });
 
-app.get('/googletrends', function(req,res){
-	 googleTrends.interestOverTime({keyword: 'Valentines Day'})
+app.get('/googletrends/:keyword', function(req,res){
+
+	var endDate = New Date();
+	var startDate = endDate(endDate.getMonth()-1);
+
+	console.log(endDate);
+	console.log(startDate);
+
+	googleTrends.interestOverTime({keyword: req.params.keyword,startTime: startDate,endTime: endDate})
 	.then(function(results){
   	res.send(results);
 	})
+	
 });
 
 var server = app.listen(8081, function(){
