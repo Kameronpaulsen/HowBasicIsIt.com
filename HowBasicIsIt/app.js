@@ -3,10 +3,10 @@ var express= require('express');
 var app =  express();
 
 const googleTrends= require('google-trends-api');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+//app.use(bodyParser.json()); // for parsing application/json
+//app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('views'));
 
 app.get('/', function(req,res){
@@ -19,7 +19,7 @@ app.get('/googletrends/:id?', function(req,res){
 	var endDate = new Date();
 	var startDate = new Date();
 	startDate.setMonth(endDate.getMonth() -3);
-	
+
 	console.log(endDate);
 	console.log(startDate);
 	googleTrends.interestOverTime({keyword: req.params,startTime: startDate,endTime: endDate})
