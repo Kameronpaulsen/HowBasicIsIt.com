@@ -58,12 +58,15 @@
 		$('#searchBtn').on('click', function(){
 			var searchText = $('#search').val();
 			var sum = 0;
+			var jsonResult = new Object();
 			console.log(searchText);
 			$.ajax({
   			url: '/googletrends/' + searchText,
   			type: "GET",
   			success: function(beta) {
 				$("#resultParagraph").text(beta);
+				jsonResult = JSON.Parse(beta);
+				console.log(jsonResult);
 				}
 			});
 
