@@ -7,10 +7,9 @@ app.use(express.static('views'));
 
 app.get('/', function(req,res){
 	res.sendFile(_dirname + "/" + "index.html");
-
 });
 
-app.get('/googletrends/:keyword?', function(req,res){
+app.get('/googletrends', function(req,res){
 
 	var endDate = New Date();
 	var startDate = endDate(endDate.getMonth()-1);
@@ -18,7 +17,7 @@ app.get('/googletrends/:keyword?', function(req,res){
 	console.log(endDate);
 	console.log(startDate);
 
-	googleTrends.interestOverTime({keyword: req.params.keyword,startTime: startDate,endTime: endDate})
+	googleTrends.interestOverTime({keyword: req.params,startTime: startDate,endTime: endDate})
 	.then(function(results){
   	res.send(results);
 	})
