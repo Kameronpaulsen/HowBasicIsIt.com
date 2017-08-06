@@ -17,8 +17,7 @@ app.get('/googletrends/:id?', function(req,res){
 
 	res.send(req.params);
 
-	
-	var endDate = New Date();
+	//var endDate = New Date();
 	var startDate = endDate(endDate.getMonth()-1);
 
 	console.log(endDate);
