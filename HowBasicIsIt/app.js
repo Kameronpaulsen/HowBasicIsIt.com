@@ -13,7 +13,7 @@ app.get('/', function(req,res){
 	res.sendFile(_dirname + "/" + "index.html");
 });
 
-app.get('/googletrends/:id?', function(req,res){
+app.get('/googletrends/:keyword?', function(req,res){
 
 	var endDate = new Date();
 	var startDate = new Date();
@@ -21,7 +21,7 @@ app.get('/googletrends/:id?', function(req,res){
 	console.log(req.params.id);
 	console.log(endDate);
 	console.log(startDate);
-	googleTrends.interestOverTime({keyword: req.params.id,startTime: startDate,endTime: endDate})
+	googleTrends.interestOverTime({keyword: req.params.keyword,startTime: startDate,endTime: endDate})
 	.then(function(results){
 	console.log(results);
   	res.send(results);
