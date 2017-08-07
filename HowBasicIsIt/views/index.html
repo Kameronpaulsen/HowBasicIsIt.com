@@ -99,8 +99,10 @@
 							console.log("max zScore: " + Math.max.apply(Math,zScoreArray));
 							$("#resultParagraph").text(results);
 						}
-						$("#resultParagraph").text(Math.max.apply(Math,zScoreArray));
-						
+						else
+						{
+							$("#resultParagraph").text(Math.max.apply(Math,zScoreArray));
+						}
 					}
 				});
 
