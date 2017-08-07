@@ -149,13 +149,13 @@
 			{
 				resultText = "Definitely a Fad";
 			}
-			else if ( 8.0 < maxZScore )
+			else if ( 8.0 < maxZScore && maxZscore <= 13.00)
 			{
 				resultText = "Gangnam Style Level Fad";
 			}
 			else
 			{
-				resultText = "Nan";
+				resultText = "So Hip We Don't Even Know What That Is";
 			}
 			console.log(maxZScore);
 			$("#resultParagraph").text(resultText);
