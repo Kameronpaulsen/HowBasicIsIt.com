@@ -76,7 +76,7 @@
 							sum += val.value[0];
 						}
 						//compute mean of googletrends search values
-						mean = mean(sum,jsonResult.default.timelineData.length);
+						mean = sum/jsonResult.default.timelineData.length;
 						//compute population mean of values
 						var runningSum = 0;
 						for(var val of jsonResult.default.timelineData)
@@ -104,14 +104,14 @@
 
 	});
 
-	function mean(sum, n)
-	{
-		return sum/n;
-	}
+	
 });
 function computeMean(obj)
 {}
-
+function mean(sum, n)
+{
+		return sum/n;
+}s
 
 
 </script>
