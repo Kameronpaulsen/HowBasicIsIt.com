@@ -69,7 +69,7 @@
 	  			success: function(results) {
 					$("#resultParagraph").text(results);
 						jsonResult = JSON.parse(results);
-						zScoreArray.length = jsResult.default.timelineData.length;
+						zScoreArray.length = jsonResult.default.timelineData.length;
 						for(var val of jsonResult.default.timelineData)
 						{
 							sum += val.value[0];
