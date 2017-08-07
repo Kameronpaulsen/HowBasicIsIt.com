@@ -58,19 +58,37 @@
 		$('#searchBtn').on('click', function(){
 			var searchText = $('#search').val();
 			var sum = 0;
+			var mean = 0;
+			var zScoreArray = new Array();
+			var standardDeviation= 0;
 			var jsonResult = new Object();
 			console.log(searchText);
 				$.ajax({
 	  			url: '/googletrends/' + searchText,
 	  			type: "GET",
-	  			success: function(beta) {
-					$("#resultParagraph").text(beta);
-					jsonResult = JSON.parse(beta);
+	  			success: function(results) {
+					$("#resultParagraph").text(results);
+						jsonResult = JSON.parse(results);
 						for(var val of jsonResult.default.timelineData)
 						{
 							sum += val.value[0];
 						}
-					console.log(sum/jsonResult.default.timelineData.length);
+						mean = sum/jsonResult.default.timelineDate.length;
+						console.log("Mean: " + sum/jsonResult.default.timelineData.length);
+						var runningSum = 0;
+						for(var val of jsonResult.default.timelineData)
+						{
+							runningSum += Math.pow((val-mean),2);
+						}
+						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData));
+						console.log("Standard Deviation: " + standardDeviation);
+						var i = 0;
+						for (var val of jsonResult.default.timelineData)
+						{
+							zScoreArray[i] = ((val-mean)/standardDeviation);
+							i++;
+							console.log("zScore at " + i + ": " + zScoreArray[i]);
+						}
 					}
 				});
 
