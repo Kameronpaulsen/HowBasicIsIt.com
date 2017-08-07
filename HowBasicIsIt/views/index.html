@@ -57,7 +57,7 @@
 			$(document).keypress(function(e){
 				if(e.which ==13)
 				{
-					if((!($('#searchText').val() === "")) || !($('#searchText').length > 3)) {
+					if(!($('#searchText').val() === "")){
 					var searchText = $('#search').val();
 					console.log(searchText);
 					$.ajax({
@@ -70,7 +70,7 @@
 					}
 					else
 					{
-						$("#resultParagraph").text("Enter Something that is atleast three letters long");
+						$("#resultParagraph").text("Enter Something");
 					}
 				}
 			});
