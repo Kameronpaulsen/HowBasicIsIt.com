@@ -122,7 +122,12 @@
 			$(document).keypress(function(e){
 				if(e.which ==13)
 				{
-					window.alert("enter not supported yet");
+					$.ajax({
+					url: '/googletrends/' + searchText,
+					type: "GET",
+					data: results,
+					success: search(results);
+					}); 
 				}
 			});
 		});
