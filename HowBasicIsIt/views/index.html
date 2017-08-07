@@ -55,8 +55,7 @@
 
 	<script>
 		$(document).ready(function(){
-			$('#searchBtn').on('keypress click', function(e){
-				if (e.which === 13 || e.type === 'click') {
+			$('#searchBtn').on('keypress click', search(){
 				var searchText = $('#search').val();
 				var sum = 0;
 				var mean = 0;
@@ -132,7 +131,13 @@
 					}
 				});
 
-			}});
+			});
+			$(document).keypress(function(e){
+				if(e.which == 13)
+				{
+					serach();
+				}
+			});
 
 
 		});
