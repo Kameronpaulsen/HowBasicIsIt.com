@@ -104,24 +104,24 @@
 						var resultText = "Nan";
 						console.log(maxZScore);
 						debugger;
-						if(Number(0.0) <= Number(maxZScore) <= Number(2.0) )
+						if(0.0 <= maxZScore && maxZScore <= 2.0)
 						{
 							console.log(maxZScore);
 							resultText = "Not Basic";
 						}
-						else if(2.0 < maxZScore < 4.0)
+						else if(2.0 < maxZScore && maxZScore <= 4.0)
 						{
 							resultText= "Not Very Basic";
 						}
-						else if(4.0 < maxZscore < 6.0)
+						else if(4.0 < maxZScore && maxZScore <= 6.0)
 						{
 							resultText = "Just Trendy";
 						}
-						else if(6.0 < maxZScore < 8.0)
+						else if(6.0 < maxZScore && maxZScore <= 8.0)
 						{
 							resultText = "Pretty Basic";
 						}
-						else if ( 8.0 < maxZScore)
+						else if ( 8.0 < maxZScore )
 						{
 							resultText = "Basic Bitch";
 						}
