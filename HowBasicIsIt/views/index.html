@@ -138,10 +138,11 @@
 							$.ajax({
 								url: '/googletrends/' + searchText,
 								type: "GET",
-								success: search(results)
+								data: results,
+								success: search
 							});
 						}});
-						
+
 
 
 					</script>
