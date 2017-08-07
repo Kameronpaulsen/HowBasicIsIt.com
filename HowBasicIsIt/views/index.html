@@ -80,6 +80,7 @@
 						{
 							runningSum += Math.pow((val-mean),2);
 						}
+						console.log("Running Sum: " + runningSum);
 						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData));
 						console.log("Standard Deviation: " + standardDeviation);
 						var i = 0;
