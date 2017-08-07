@@ -81,7 +81,7 @@
 							runningSum += Math.pow((val.value[0]-mean),2);
 						}
 						console.log("Running Sum: " + runningSum);
-						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData));
+						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData.length));
 						console.log("Standard Deviation: " + standardDeviation);
 						var i = 0;
 						for (var val of jsonResult.default.timelineData)
