@@ -75,24 +75,25 @@
 							sum += val.value[0];
 						}
 						mean = sum/jsonResult.default.timelineData.length;
-						console.log("Mean: " + sum/jsonResult.default.timelineData.length);
+						//console.log("Mean: " + sum/jsonResult.default.timelineData.length);
 						var runningSum = 0;
 						for(var val of jsonResult.default.timelineData)
 						{
 							runningSum += Math.pow((val.value[0]-mean),2);
 						}
-						console.log("Running Sum: " + runningSum);
+						//console.log("Running Sum: " + runningSum);
 						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData.length));
-						console.log("Standard Deviation: " + standardDeviation);
+						//console.log("Standard Deviation: " + standardDeviation);
 						var i = 0;
 						for (var val of jsonResult.default.timelineData)
 						{
-							console.log("zScore: " + (val.value[0] - mean)/standardDeviation);
+							//console.log("zScore: " + (val.value[0] - mean)/standardDeviation);
 							zScoreArray[i] = (val.value[0]- mean)/standardDeviation;
-							console.log(zScoreArray);
+							
 							i++;
-							console.log("zScore at " + i + ": " + zScoreArray.value[i]);
+							//console.log("zScore at " + i + ": " + zScoreArray[i]);
 						}
+						console.log(zScoreArray);
 					}
 				});
 
