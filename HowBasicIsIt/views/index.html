@@ -1,73 +1,73 @@
 <DOCTYPE html>
-<html lang="en">
+	<html lang="en">
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="assets/css/style.css">
-	<!--Custom Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Chango" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="assets/css/style.css">
+		<!--Custom Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Chango" rel="stylesheet">
 
-	<title> How Basic Is It? </title>
-</head>
+		<title> How Basic Is It? </title>
+	</head>
 
 
-<body>
-	<div class="container-fluid">
-		<div class="row text-center">
-			<div class="col-lg-4"></div>
-			<div class="col-lg-4">
-				<div class="header">
-					<h1>How Basic Is It</h1>
+	<body>
+		<div class="container-fluid">
+			<div class="row text-center">
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4">
+					<div class="header">
+						<h1>How Basic Is It</h1>
+					</div>
+				</div>
+				<div class="col-lg-4">
 				</div>
 			</div>
-			<div class="col-lg-4">
+		</div>
+
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-lg-4"></div>
+				<div class="entrybox">
+					<input type="text" class="form-control" id="search">
+					<button type="button" class="btn" id="searchBtn">Search</button>
+				</div>
+				<div class="col-lg-4"></div>
 			</div>
 		</div>
-	</div>
 
-	<div class="container">
-		<div class="row text-center">
-			<div class="col-lg-4"></div>
-			<div class="entrybox">
-				<input type="text" class="form-control" id="search">
-				<button type="button" class="btn" id="searchBtn">Search</button>
-			</div>
-			<div class="col-lg-4"></div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row text-center">
-			<div class="col-lg-12" id="resultCol">
-				<p id="resultParagraph"></p>
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-lg-12" id="resultCol">
+					<p id="resultParagraph"></p>
+				</div>
 			</div>
 		</div>
-	</div>
 
 
-</body>
+	</body>
 
-<script>
-	$(document).ready(function(){
-		$('#searchBtn').on('click', function(){
-			var searchText = $('#search').val();
-			var sum = 0;
-			var mean = 0;
-			var zScoreArray = new Array();
-			var standardDeviation= 0;
-			var jsonResult = new Object();
-			console.log(searchText);
+	<script>
+		$(document).ready(function(){
+			$('#searchBtn').on('click', function(){
+				var searchText = $('#search').val();
+				var sum = 0;
+				var mean = 0;
+				var zScoreArray = new Array();
+				var standardDeviation= 0;
+				var jsonResult = new Object();
+				console.log(searchText);
 				$.ajax({
-	  			url: '/googletrends/' + searchText,
-	  			type: "GET",
-	  			success: function(results) {
-					$("#resultParagraph").text(results);
+					url: '/googletrends/' + searchText,
+					type: "GET",
+					success: function(results) {
+						var debug = 1;
 						jsonResult = JSON.parse(results);
 						zScoreArray.length = jsonResult.default.timelineData.length;
 						//Sum all googletrends search values
@@ -92,29 +92,31 @@
 							zScoreArray[i] = (val.value[0]- mean)/standardDeviation;
 							i++;
 						}
-						i=0;
-						for (var val of jsonResult.default.timelineData)
+						if(debug)
 						{
-							console.log("zScore at " + i + ": " + zScoreArray[i]);
-							i++;
+							console.log(jsonResult);
+							console.log(zScoreArray);
+							console.log("max zScore: " + Math.max.apply(Math,zScoreArray));
+							$("#resultParagraph").text(results);
 						}
-						console.log("max zScore: " + Math.max.apply(Math,zScoreArray));
+						$("#resultParagraph").text(Math.max.apply(Math,zScoreArray));
+						
 					}
 				});
 
-	});
-
-	
-});
-function computeMean(obj)
-{};
-function mean(sum, n)
-{
-		return sum/n;
-};
+			});
 
 
-</script>
+		});
+		function computeMean(obj)
+		{};
+		function mean(sum, n)
+		{
+			return sum/n;
+		};
 
-</html>
+
+	</script>
+
+	</html>
 
