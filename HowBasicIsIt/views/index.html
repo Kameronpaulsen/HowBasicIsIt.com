@@ -52,6 +52,45 @@
 	</body>
 
 	<script>
+		/*
+		$(document).ready(function(){
+			$(document).keypress(function(e){
+				if(e.which ==13)
+				{
+					var searchText = $('#search').val();
+					$.ajax({                                            
+					    url: '/googletrends/' + searchText,
+						type: "GET",
+						success: function(results) {
+							search(results);
+						});
+					});
+				    
+				}
+			});
+		});
+		*/
+		$(document).ready(function(){
+			$('#searchBtn').on('keypress click', function(){
+				var searchText = $('#search').val();
+				var sum = 0;
+				var mean = 0;
+				var maxZScore=0;
+				var zScoreArray = new Array();
+				var standardDeviation= 0;
+				var jsonResult = new Object();
+				console.log(searchText);
+				$.ajax({
+					url: '/googletrends/' + searchText,
+					type: "GET",
+					success: function(results) {
+						search(results);
+					}
+				});
+
+			});
+		});
+		
 		var search = function(results)
 		{	
 			var sum = 0;
@@ -121,44 +160,6 @@
 			}
 			$("#resultParagraph").text(resultText);
 		}
-		/*
-		$(document).ready(function(){
-			$(document).keypress(function(e){
-				if(e.which ==13)
-				{
-					var searchText = $('#search').val();
-					$.ajax({                                            
-					    url: '/googletrends/' + searchText,
-						type: "GET",
-						success: function(results) {
-							search(results);
-						});
-					});
-				    
-				}
-			});
-		});
-		*/
-		$(document).ready(function(){
-			$('#searchBtn').on('keypress click', function(){
-				var searchText = $('#search').val();
-				var sum = 0;
-				var mean = 0;
-				var maxZScore=0;
-				var zScoreArray = new Array();
-				var standardDeviation= 0;
-				var jsonResult = new Object();
-				console.log(searchText);
-				$.ajax({
-					url: '/googletrends/' + searchText,
-					type: "GET",
-					success: function(results) {
-						search(results);
-					}
-				});
-
-			});
-		});
 	</script>
 
 	</html>
