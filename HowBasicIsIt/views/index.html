@@ -59,6 +59,7 @@
 				var searchText = $('#search').val();
 				var sum = 0;
 				var mean = 0;
+				var maxZScore=0;
 				var zScoreArray = new Array();
 				var standardDeviation= 0;
 				var jsonResult = new Object();
@@ -92,17 +93,40 @@
 							zScoreArray[i] = (val.value[0]- mean)/standardDeviation;
 							i++;
 						}
+						maxZScore = Math.abs(Math.max.apply(Math,zScoreArray));
 						if(debug)
 						{
 							console.log(jsonResult);
 							console.log(zScoreArray);
-							console.log("max zScore: " + Math.max.apply(Math,zScoreArray));
+							console.log("max zScore: " + maxZScore);
 							$("#resultParagraph").text(results);
+						}
+						var resultText = "Nan";
+						if(0<maxZScore<2)
+						{
+							resultText = "Not Basic";
+						}
+						else if(2<maxZScore<4)
+						{
+							resultText= "Not Very Basic";
+						}
+						else if(4<maxZscore<6)
+						{
+							resultText = "Just Trendy";
+						}
+						else if(6<maxZScore<8)
+						{
+							resultText = "Pretty Basic";
+						}
+						else if (maxZScore>8)
+						{
+							resultText = "Basic Bitch";
 						}
 						else
 						{
-							$("#resultParagraph").text(Math.max.apply(Math,zScoreArray));
+							resultText = "Nan";
 						}
+						$("#resultParagraph").text(resultText);
 					}
 				});
 
