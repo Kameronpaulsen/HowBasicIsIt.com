@@ -98,7 +98,7 @@
 							console.log("zScore at " + i + ": " + zScoreArray[i]);
 							i++;
 						}
-						console.log("max zScore: " + Math.max(zScoreArray));
+						console.log("max zScore: " + Math.max.apply(Math,zScoreArray));
 					}
 				});
 
