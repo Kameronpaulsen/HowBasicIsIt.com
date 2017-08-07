@@ -57,16 +57,16 @@
 			$(document).keypress(function(e){
 				if(e.which ==13)
 				{
-					if(!(var searchText = $('#search').val().equals("")))
-					{
-						console.log(searchText);
-						$.ajax({
-							url: '/googletrends/' + searchText,
-							type: "GET",
-							success: function(results) {
-								search(results);
-							}
-						});
+					if(!($('#searchText').val().match(/\S/))) {
+					var searchText = $('#search').val();
+					console.log(searchText);
+					$.ajax({
+						url: '/googletrends/' + searchText,
+						type: "GET",
+						success: function(results) {
+							search(results);
+						}
+					});
 					}
 				}
 			});
