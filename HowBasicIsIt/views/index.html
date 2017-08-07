@@ -89,11 +89,17 @@
 						{
 							//console.log("zScore: " + (val.value[0] - mean)/standardDeviation);
 							zScoreArray[i] = (val.value[0]- mean)/standardDeviation;
-							
 							i++;
 							//console.log("zScore at " + i + ": " + zScoreArray[i]);
 						}
 						console.log(zScoreArray);
+						i=0;
+						for (var val of jsonResult.default.timelineData)
+						{
+							console.log("zScore at " + i + ": " + zScoreArray[i]);
+							i++;
+						}
+						
 					}
 				});
 
