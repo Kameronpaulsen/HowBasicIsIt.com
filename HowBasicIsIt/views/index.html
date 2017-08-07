@@ -69,6 +69,7 @@
 	  			success: function(results) {
 					$("#resultParagraph").text(results);
 						jsonResult = JSON.parse(results);
+						zScoreArray.length = jsResult.default.timelineData.length;
 						for(var val of jsonResult.default.timelineData)
 						{
 							sum += val.value[0];
@@ -88,6 +89,7 @@
 						{
 							console.log("zScore: " + (val.value[0] - mean)/standardDeviation);
 							zScoreArray[i] = (val.value[0]- mean)/standardDeviation;
+							console.log(zScoreArray);
 							i++;
 							console.log("zScore at " + i + ": " + zScoreArray[i]);
 						}
