@@ -86,7 +86,7 @@
 						var i = 0;
 						for (var val of jsonResult.default.timelineData)
 						{
-							consle.log("val - mean: " + (val.value[0] - mean));
+							console.log("val - mean: " + (val.value[0] - mean));
 							zScoreArray[i] = ((val.value[0]- mean)/standardDeviation);
 							i++;
 							console.log("zScore at " + i + ": " + zScoreArray[i]);
