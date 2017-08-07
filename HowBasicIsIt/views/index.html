@@ -78,7 +78,7 @@
 						var runningSum = 0;
 						for(var val of jsonResult.default.timelineData)
 						{
-							runningSum += Math.pow((val-mean),2);
+							runningSum += Math.pow((val.value[0]-mean),2);
 						}
 						console.log("Running Sum: " + runningSum);
 						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData));
@@ -86,7 +86,7 @@
 						var i = 0;
 						for (var val of jsonResult.default.timelineData)
 						{
-							zScoreArray[i] = ((val-mean)/standardDeviation);
+							zScoreArray[i] = ((val.value[0]-mean)/standardDeviation);
 							i++;
 							console.log("zScore at " + i + ": " + zScoreArray[i]);
 						}
