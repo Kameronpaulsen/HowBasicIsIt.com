@@ -67,7 +67,7 @@
 					url: '/googletrends/' + searchText,
 					type: "GET",
 					success: function(results) {
-						var debug = 1;
+						var debug = 0;
 						jsonResult = JSON.parse(results);
 						zScoreArray.length = jsonResult.default.timelineData.length;
 						//Sum all googletrends search values
