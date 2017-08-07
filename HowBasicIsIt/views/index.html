@@ -70,41 +70,47 @@
 					$("#resultParagraph").text(results);
 						jsonResult = JSON.parse(results);
 						zScoreArray.length = jsonResult.default.timelineData.length;
+						//Sum all googletrends search values
 						for(var val of jsonResult.default.timelineData)
 						{
 							sum += val.value[0];
 						}
-						mean = sum/jsonResult.default.timelineData.length;
-						//console.log("Mean: " + sum/jsonResult.default.timelineData.length);
+						//compute mean of googletrends search values
+						mean = mean(sum,jsonResult.default.timelineData.length);
+						//compute population mean of values
 						var runningSum = 0;
 						for(var val of jsonResult.default.timelineData)
 						{
-							runningSum += Math.pow((val.value[0]-mean),2);
+							runningSum += Math.pow((val.value[0]- mean),2);
 						}
-						//console.log("Running Sum: " + runningSum);
+						//compute standard deviation
 						standardDeviation = Math.sqrt((runningSum/jsonResult.default.timelineData.length));
-						//console.log("Standard Deviation: " + standardDeviation);
 						var i = 0;
+						//Compute zScore of every googletrend value. Zscore tells you how many standard deviations the value is from the mean
 						for (var val of jsonResult.default.timelineData)
 						{
-							//console.log("zScore: " + (val.value[0] - mean)/standardDeviation);
 							zScoreArray[i] = (val.value[0]- mean)/standardDeviation;
 							i++;
-							//console.log("zScore at " + i + ": " + zScoreArray[i]);
 						}
-						console.log(zScoreArray);
 						i=0;
 						for (var val of jsonResult.default.timelineData)
 						{
 							console.log("zScore at " + i + ": " + zScoreArray[i]);
 							i++;
 						}
-						
+						console.log("max zScore: " + Math.max(zScoreArray));
 					}
 				});
 
 	});
 });
+function computeMean(obj)
+{}
+function mean(sum, n)
+{
+	return sum/n;
+}
+
 </script>
 
 </html>

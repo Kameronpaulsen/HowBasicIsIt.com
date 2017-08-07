@@ -15,12 +15,12 @@ app.get('/', function(req,res){
 
 app.get('/googletrends/:keyword?', function(req,res){
 
-	var endDate = new Date();
-	var startDate = new Date();
-	startDate.setFullYear(endDate.getFullYear() -4);
-	console.log(endDate);
-	console.log(startDate);
-	googleTrends.interestOverTime({keyword: req.params.keyword,startTime: startDate,endTime: endDate})
+	//var endDate = new Date();
+	//var startDate = new Date();
+	//startDate.setFullYear(endDate.getFullYear() -4);
+	//console.log(endDate);
+	//console.log(startDate);
+	googleTrends.interestOverTime({keyword: req.params.keyword})
 	//googleTrends.interestOverTime({keyword: req.params.keyword})
 	.then(function(results){
   	res.send(results);
