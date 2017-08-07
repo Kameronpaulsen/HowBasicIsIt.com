@@ -13,7 +13,7 @@
 		<!--Custom Fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Chango" rel="stylesheet">
 
-		<title> How Basic Is It? </title>
+		<title> Is It A Fad? </title>
 	</head>
 
 
@@ -23,7 +23,7 @@
 				<div class="col-lg-4"></div>
 				<div class="col-lg-4">
 					<div class="header">
-						<h1>How Basic Is It</h1>
+						<h1>Is It A Fad?</h1>
 					</div>
 				</div>
 				<div class="col-lg-4">
@@ -55,7 +55,8 @@
 
 	<script>
 		$(document).ready(function(){
-			$('#searchBtn').on('click', function(){
+			$('#searchBtn').on('keypress click', function(e){
+				if (e.which === 13 || e.type === 'click') {
 				var searchText = $('#search').val();
 				var sum = 0;
 				var mean = 0;
@@ -131,7 +132,7 @@
 					}
 				});
 
-			});
+			}});
 
 
 		});
