@@ -57,7 +57,7 @@
 			$(document).keypress(function(e){
 				if(e.which ==13)
 				{
-					if((!($('#searchText').val() === "")) || ($(searchText).length > 3)) {
+					if((!($('#searchText').val() === "")) || ($(searchText).length < 3)) {
 					var searchText = $('#search').val();
 					console.log(searchText);
 					$.ajax({
